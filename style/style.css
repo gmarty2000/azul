@@ -1,0 +1,8 @@
+/* CSS - Regole per il corpo della pagina */
+
+body {
+	margin: 0;
+	padding: 0;
+	
+	overflow: hidden;
+}

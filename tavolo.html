@@ -1,0 +1,29 @@
+<!-- 	tavolo.html
+		Questo documento HTML crea il tavolo da gioco con la piattaforma da gioco più N espositori (N cambia in base al numero di giocatori).
+		Per funzionare, bisogna importare:
+		- i file comuni (style.css e script.js);
+		- i componenti del tavolo (piattaforma.css, piattaforma.js, espositore.css ed espositore.js);
+		- i file del tavolo (tavolo.css e tavolo.js).
+ -->
+
+<html>
+	<head>
+		<!-- "Impostazioni" generali del documento HTML -->
+		<meta charset="utf-8" />			<!-- Codifica del documento -->
+		<title>AZUL</title>					<!-- Titolo della finestra -->
+		
+		<!-- Importa i fogli di stile (i file con estensione "css") -->
+		<link rel="stylesheet" type="text/css" href="style/espositore.css">
+		<link rel="stylesheet" type="text/css" href="style/piattaforma.css">
+		<link rel="stylesheet" type="text/css" href="style/tavolo.css">
+		
+		<!-- Importa gli script javascript (i file con estensione "js") -->
+		<script type="text/javascript" src="script/script.js"></script>
+		<script type="text/javascript" src="script/espositore.js"></script>
+		<script type="text/javascript" src="script/piattaforma.js"></script>
+		<script type="text/javascript" src="script/tavolo.js"></script>
+	</head>
+	<body>
+		<div class="tavolo"></div>		<!-- In automatico, tavolo.js aggiunge a questo <div> il DOM necessario per creare il tavolo da gioco -->
+	</body>
+</html>

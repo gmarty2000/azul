@@ -1,0 +1,295 @@
+/* TODO: rivedere il codice ed aggiungere eventuali commenti */
+
+/* Import - Importa il foglio di stile generico */
+@import url("style.css");
+
+/* Regole - Sfondo della pagina */
+html {
+	position: relative;
+	
+	width: 100%;
+	height: 100vh;
+	
+	color: #000;
+}
+
+/* Regole - Tavolo */
+body {
+	position: absolute;
+	width: 90vh;					/* Il corpo html è grande quanto un quadrato con il lato pari al 90% dell'altezza dello schermo */
+	height: 90vh;
+	
+	top: 50%;
+	left: 50%;
+	
+	transform: translate(-50%, -50%);
+	overflow: hidden;				/* Rimuovo la scrollbar verticale e orizzontale */
+}
+
+/* Regole - Contorno del tavolo */
+.piattaforma {
+	position: relative;				/* Il widget è posizionato rispetto alla sua posizione normale */
+	
+	/* Riduco del 5% l'area totale per far visualizzare lo sfondo del tag <body> */
+	width: calc(100% - 10%);
+	height: calc(100% - 10%);
+	
+	/*background: #ff00000f;*/
+	background: radial-gradient(black 15%, transparent 16%) 0 0,
+				radial-gradient(black 15%, transparent 16%) 8px 8px,
+				radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+				radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+				
+	background-color: #282828;
+	background-size: 1vw 1vw;
+	
+	border: solid 1vw transparent;
+}
+
+/* Regole - Sezione punteggio */
+.punteggio {
+	width: 100%;
+	height: 25%;
+	position: absolute;				/* Il widget è posizionato rispetto alla posizione assoluta del widget padre */
+	
+    left: 0;
+    top: 0;
+
+	background: #0ff8;
+}
+
+.punteggio-riga {
+	width: 98%;
+	height: calc((100% / 6) - 2%);
+	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: space-between;
+	
+	margin-left: 1%;
+	margin-top: 1%;
+}
+
+.punteggio-cella {
+	box-sizing: border-box;
+	/* border: solid 1px black; */
+	
+	height: 100%;
+	
+	flex-grow: 1;
+	font-size: 2.5vh;
+	
+	text-align: center;
+	line-height: -moz-block-height;	/* Centrare verticalmente il testo */
+}
+
+.punteggio-sfondo {
+	background: orange;
+}
+
+/* Regole - Sezione righe */
+.righe {
+	width: 50%;
+	height: 50%;
+	position: absolute;				/* Il widget è posizionato rispetto alla posizione assoluta del widget padre */
+	
+    left: 0;
+    top: 27.5%;
+}
+
+.righe-riga {
+	width: 98%;
+	height: calc(100% / 5);
+	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: flex-end;
+	
+	margin-top: 0.20%;
+	margin-bottom: 0.20%;
+	margin-left: 1%;
+}
+
+.righe-cella {
+	box-sizing: border-box;
+	/* border: solid 1px black; */
+	
+	max-width: calc(100% / 5);
+	height: 87.5%;
+	
+	flex-grow: 1;
+	font-size: 2.5vh;
+	
+	opacity: 0.5;
+	
+	text-align: center;
+	line-height: -moz-block-height;	/* Centrare verticalmente il testo */
+}
+
+/* Regole - Sezione parete */
+.parete {
+	width: 50%;
+	height: 50%;
+	position: absolute;				/* Il widget è posizionato rispetto alla posizione assoluta del widget padre */
+	
+    left: 50%;
+    top: 27.5%;
+}
+
+.parete-riga {
+	width: 98%;
+	height: calc(100% / 5);
+	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: flex-start;
+	
+	margin-top: 0.20%;
+	margin-bottom: 0.20%;
+	margin-left: 1%;
+}
+
+.parete-cella {
+	box-sizing: border-box;
+	/* border: solid 1px black; */
+	
+	width: calc(100% / 20);
+	height: 87.5%;
+	
+	flex-grow: 1;
+	font-size: 2.5vh;
+	
+	text-align: center;
+	line-height: -moz-block-height;	/* Centrare verticalmente il testo */
+	opacity: 0.2;
+}
+
+.parete-cella-selezionata {
+	opacity: 1.0;
+}
+
+.box {
+	position: relative;
+	width: 10px;
+	height: 10px;
+	background: rgba(255, 255, 255, .1);	
+	color: aqua;
+	opacity: 0.5;
+}
+
+.layer {
+	position: absolute;
+	display: block;
+	width: 100px;
+	height: 100px;
+	background: aqua;
+	transition: 0.5s;
+	border: 0px;
+}
+
+
+/* Regole - Sezione basamento */
+.basamento {
+	width: 100%;
+	height: 20%;
+	position: relative;				/* Il widget è posizionato rispetto alla posizione assoluta del widget padre */
+	
+    left: 0;
+    top: 80%;
+}
+
+.basamento-riga {
+	display: flex;
+	
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: flex-start;
+	
+	position: absolute;
+	
+	width: 70%;
+	height: 100%;
+	
+	top: 0;
+	left: 0;
+}
+
+.basamento-cella {
+	position: relative;
+	
+	width: calc(100% / 7);
+	height: 100%;
+	
+	flex-grow: 1;
+}
+
+.basamento-cella-immagine {
+	position: absolute;
+	
+	width: 100%;
+	height: 100%;
+}
+
+.basamento-cella-etichetta {
+	position: absolute;
+	
+	width: 100%;
+	height: 20%;
+	
+	text-align: center;
+}
+
+.basamento-punteggio {
+	position: absolute;
+	
+	width: 30%;
+	height: 100%;
+
+	top: 0;
+	left: 70%;
+	
+	border-top-left-radius: 25%;
+	
+	background: #46fa;
+}
+
+/* Regole - Animazione per posizionamento errato di una piastrella */
+.errore-inserimento-piastrella {
+	animation: shake 0.5s;
+}
+
+/* Animazione - Sfondo */
+/*@keyframes gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}*/
+
+/* Animazione - Errore */
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

@@ -1,0 +1,118 @@
+/* TODO: rivedere il codice ed aggiungere eventuali commenti */
+
+/* Import - Importa il foglio di stile generico */
+@import url("style.css");
+
+/* TODO: rendere generico */
+body {
+	position: relative;
+	width: 100vw;
+	height: 100%;
+	
+	background: linear-gradient(to right, 	#e9dfc4 0%,
+											#e9dfc4 1%,
+											#ede3c8 2%,
+											#ede3c8 24%,
+											#ebddc3 25%,
+											#e9dfc4 48%,
+											#ebddc3 49%,
+											#e6d8bd 52%,
+											#e6d8bd 53%,
+											#e9dbc0 54%,
+											#e6d8bd 55%,
+											#e6d8bd 56%,
+											#e9dbc0 57%,
+											#e6d8bd 58%,
+											#e6d8bd 73%,
+											#e9dbc0 74%,
+											#e9dbc0 98%,
+											#ebddc3 100%);
+	background-size: 10%;
+	
+	transition: 0.5s;
+}
+
+.tavolo {
+	width: 100%;
+	height: 100%;
+}
+
+.tavolo,
+.tavolo .piattaforma,
+.tavolo .espositore {
+	transition: 0.5s;
+}
+
+.tavolo .piattaforma {
+	position: absolute;
+	
+	width: 30vh;
+	height: 30vh;
+	
+	top: 50%;
+	left: 50%;
+	
+	transform: translate(-50%, -50%);
+}
+
+.tavolo .espositore {
+	position: absolute;
+	width: 15vw;
+	height: 15vh;
+	margin: 2.5%;
+}
+
+.tavolo .clicked {
+	margin: 0;
+	z-index: 1;
+	
+	position: absolute;
+	top: 50% !important;
+	left: 50% !important;
+	
+	box-shadow: 0 0 .5vh .5vh #0ff5;
+}
+
+.tavolo .unclicked {
+	z-index: -1;
+}
+
+/* TODO: inserire animazioni */
+.tavolo .bottone-indietro {
+	position: absolute;
+	top: 1vh;
+	left: 1vh;
+	
+	width: 6vh;
+	height: 6vh;
+	
+	z-index: 1;
+}
+
+/* MURO
+body {
+	background-color: silver;
+	background-image: linear-gradient(335deg, #b00 23px, transparent 23px), linear-gradient(155deg, #d00 23px, transparent 23px), linear-gradient(335deg, #b00 23px, transparent 23px), linear-gradient(155deg, #d00 23px, transparent 23px);
+	background-size: 58px 58px;
+	background-position: 0px -2px, 4px 31px, 29px 27px, 34px 2px;
+}
+*/
+
+/* RICAMO
+body {
+	background: linear-gradient(45deg, #dca 12%, transparent 0, transparent 88%, #dca 0), linear-gradient(135deg, transparent 37%, #a85 0, #a85 63%, transparent 0), linear-gradient(45deg, transparent 37%, #dca 0, #dca 63%, transparent 0) #753;
+    background-size: auto auto, auto auto, auto auto;
+	background-size: 25px 25px;
+}
+*/
+
+/* CUBI
+body {
+	background-color: #556;
+	background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445), linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445), linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445), linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445), linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a), linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+	background-size: 80px 140px;
+	background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+*/
+
+/* ALTRI EFFETTI: http://lea.verou.me/css3patterns/ */
