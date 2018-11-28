@@ -2,13 +2,22 @@
 @import url("style.css");
 
 .espositore {
-	
+    
+    background-image: url("../image/espositore.png");
+    border-radius: 50%;
+    background-size: 100% 100%;
+
+
 }
 
 .espositore .base {
-	
+    
+    
+
 }
 
 .espositore .piastrella {
+
+    
 	
 }
