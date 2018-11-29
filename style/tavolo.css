@@ -55,10 +55,18 @@ body {
 	transform: translate(-50%, -50%);
 }
 
+/*	TODO:
+
+	Ho cambiato un attimo l'altezza dell'espositore che avevi messo qui
+	perchè rimaneva troppo schiacciato, il problema e che ingrandisce troppo 
+	l'oggetto, vedi come riesci a fare
+
+*/
+
 .tavolo .espositore {
 	position: absolute;
 	width: 15vw;
-	height: 15vh;
+	height: 30vh;
 	margin: 2.5%;
 }
 
