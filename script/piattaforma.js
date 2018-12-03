@@ -108,7 +108,7 @@ function creaRighe(righe) {
 /* Funzione - Creazione GUI per la sezione "parete" (parte centrale a destra) */
 function creaParete(parete) {
 	for (var nRiga = 0; nRiga < N_RIGHE; nRiga++) {
-		var elemRiga = creazioneComponente(parete, ELEMENTO_HTML, Classe.PIATTAFORMA.PARETE.nome, null, null);
+		var elemRiga = creazioneComponente(parete, ELEMENTO_HTML, Classe.PIATTAFORMA.PARETE.RIGA.nome, null, null);
 		var idCella = 0;
  
 		for (var nCella = 0; nCella < N_COLONNE_PARETE; nCella++){
