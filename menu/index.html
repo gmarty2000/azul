@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>MENU DI PAUSA</title>
+		<link rel="stylesheet" type="text/css" href="style.css"> <!--Includo lo style.css , ovvero lo stile dell'interfaccia del menu-->
+		<link rel="stylesheet" type="text/css" href="bottone.css"><!--Includo bottone.css , ovvero lo stile dei bottoni del menu-->
+
+		<script type="text/javascript">
+			
+			function close_window() {
+				if (confirm("Sei sicuro di voler uscire dal gioco?")) {
+   					 window.close();
+				}
+  			}
+		
+
+		</script>
+
+	</head>
+	<body onload="">
+			<div class="menu-container">
+				<!--Tramite svg creo una zona rettangolare di dimensione finita entro si trovano i bottoni-->
+				<svg viewBox="0 0 100 100"><rect width="100" height="100"></rect></svg> 
+
+				<!-- tramite le classi dello style.css vado a definire lo stile del menu, e con i link si potrà passare alla prossima schermata-->
+				<div class="menu">
+					<div class="menu-item-title">Menu</div>
+					<div class="menu-item">
+						<a href="Modalita/Modalita.html">GIOCA</a>
+					</div>
+					<div class="menu-item">
+						<a target="_blank" href="Regolamento/Azul_Regolamento.pdf">REGOLAMENTO</a>
+					</div>
+					<div class="menu-item">
+						<a href="#">TUTORIAL</a>
+					</div>
+					<div class="menu-item">
+						<a href="Impostazioni/Impostazioni.html">IMPOSTAZIONI</a>
+					</div>
+					<div class="menu-item" >
+						<a href="#"onclick="close_window()">ESCI</a>
+					</div>
+				</div>
+			</div>
+	</body>
+</html>
+
+
+<!--window.location.href = 'Bottone.html';-->

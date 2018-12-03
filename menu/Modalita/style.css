@@ -1,0 +1,75 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background: #073146;
+	font-family: sans-serif;
+}
+
+.menu-container {
+	width: 75vh;
+	height: 75vh;
+	position: absolute;
+	
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+	background: #001e2d;
+	box-sizing: border-box;
+	box-shadow: 0 4vh 7vw rgba(0,0,0,.5);
+	border: .1em solid rgba(0,0,0,.5);
+}
+
+.menu-container .menu {
+	width: calc(100% - 4.5em);
+	height: calc(100% - 4.5em);
+	position: absolute;
+	
+	top: .75em;
+	left: .75em;
+	right: .75em;
+	
+	border: .1em solid #c76e03;
+	padding: 1.5em;
+	box-shadow: 0 1vh 1.5vw rgba(0,0,0,.5);
+	text-align: center;
+}
+
+.menu-container svg,
+.menu-container svg rect {
+	position: absolute;
+	top: 0;
+	left: 0;
+	fill: transparent;
+}
+
+.menu-container > svg > rect { /* Per indicare il figlio preciso (per creare due "effetti stroke" */
+	stroke: #0093ff;
+	stroke-width: 1;
+	stroke-dasharray: 100;
+	animation: animate 5s linear infinite;
+}
+
+.menu-item,
+.menu-item-title {
+	position: relative;
+	width: 100%;
+	height: calc(100% / 4);		/* COSTANTE: numero di voci*/
+	line-height: 1em;
+}
+
+.menu-item-title {
+	color: #fff;
+	font-size: 2em;
+	font-family: Comics Sans;
+	margin-bottom: -1em;
+}
+
+@keyframes animate {
+	0% {
+		stroke-dashoffset: 400;
+	},
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
