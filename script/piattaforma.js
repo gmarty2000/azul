@@ -40,7 +40,7 @@ function ricercaPiattaforme() {
 	
 	/* For Each BLOCCANTE - Per ciascun elemento con la classe "piattaforma", le aggiungo il DOM e gli eventi */
 	Array.from(piattaforme).forEach(function(piattaforma) {
-		creaPiattaforma(piattaforma);
+		setPiattaforma(piattaforma);
 		aggiungiEventiPiattaforma(piattaforma);
 	});
 }
