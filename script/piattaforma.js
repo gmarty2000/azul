@@ -1,77 +1,3 @@
-/* TODO: rifattorizzare codice */
-/* TODO: cambiare nomi (metterne di più corti nelle funzioni, cambiarli per alcune variabili) */
-/* TODO: migliorare leggibilità codice (fare un refactoring del codice) */
-/* TODO: aggiungere le animazioni di transizione delle piastrelle */
-
-/* TODO: Aggiornare il numero delle righe */
-/* TODO: Rimuovere tutti gli eventuali TODO nel programma */
-
-/* piattaforma.js
- * Questo file serve per creare la piattaforma per il gioco da tavolo Azul.
- * Dopo aver importato questo file nel documento HTML, si può creare la piattaforma con due modalità:
- * - creando un elemento con la classe "piattaforma";
- * - chiamando la funzione "creaPiattaforma(<elemento HTML>).
- * 
- * Qui di seguito è descritta la struttura del file.
- *
- *	piattaforma.js																		RIGA
- *      |
- *    	|
- *    	|------	Costanti													 			 ?
- *		|			|
- *		|			|--	N_RIGHE
- *		|			|--	PRIMA_CELLA_PUNTEGGIO
- *		|			|--	ULTIMA_CELLA_PUNTEGGIO
- *		|			|--	ULTIMA_CELLA_PARETE
- *		|			|--	NUMERO_CELLE_BASAMENTO
- *		|			|--	IMMAGINE_SFONDO_RIGHE
- *		|			|--	IMMAGINI_PIASTRELLE
- *		|			|--	IMMAGINE_SFONDO_BASAMENTO
- *		|			|--	DURATA_ANIMAZIONE
- *		|			|--	VALORI_BASAMENTO
- *    	|
- *    	|------	Funzioni
- *		|			|
- *		|			|--	ricercaPiattaforme()											 ?
- *		|			|--	creaPiattaforma(element)										 ?
- *		|			|--	creaRighe(element)												 ?
- *		|			|--	creaParete(element)												 ?
- *		|			|--	creaBasamento(element)											 ?
- *		|			|--	TODO: da finire
- *		|
- *		|------	Eventi
- *					|
- *					|--	elemento: window	evento: 'load'								 ?
- */
-
-/*
-TODO: migliorare leggibilità codice
-TODO: finire
-*/
-
-/* Costanti - Classi CSS */
-const CLASSE_PUNTEGGIO = "punteggio";
-const CLASSE_PUNTEGGIO_RIGA = "punteggio-riga";
-const CLASSE_PUNTEGGIO_CELLA = "punteggio-cella";
-
-const CLASSE_RIGHE = "righe";
-const CLASSE_RIGHE_RIGA = "righe-riga";
-const CLASSE_RIGHE_CELLA = "righe-cella";
-
-const CLASSE_PARETE = "parete";
-const CLASSE_PARETE_RIGA = "parete-riga";
-const CLASSE_PARETE_CELLA = "parete-cella";
-const CLASSE_PARETE_CELLA_SELEZIONATA = "parete-cella-selezionata";
-
-const CLASSE_BASAMENTO = "basamento";
-const CLASSE_BASAMENTO_RIGA = "basamento-riga";
-const CLASSE_BASAMENTO_CELLA = "basamento-cella";
-const CLASSE_BASAMENTO_CELLA_IMMAGINE = "basamento-cella-immagine";
-const CLASSE_BASAMENTO_CELLA_ETICHETTA = "basamento-cella-etichetta";
-const CLASSE_BASAMENTO_PUNTEGGIO = "basamento-punteggio";
-
-const CLASSE_ERRORE_INSERIMENTO_PIASTRELLA = "errore-inserimento-piastrella";
-
 /* Costanti - Numeri */
 const N_RIGHE = 5;
 const N_COLONNE_PUNTEGGIO = 20;
@@ -110,7 +36,7 @@ function ricercaPiattaforme() {
 		
 	/* Variabili - Salvataggio del document e delle sezioni con classe "piattaforma" inserite nell'HTML */
 	var doc = this.document;
-	var piattaforme = document.body.getElementsByClassName(CLASSE_PIATTAFORMA);
+	var piattaforme = document.body.getElementsByClassName(Classe.TAVOLO.PIATTAFORMA.nome);
 	
 	/* For Each BLOCCANTE - Per ciascun elemento con la classe "piattaforma", le aggiungo il DOM e gli eventi */
 	Array.from(piattaforme).forEach(function(piattaforma) {
@@ -120,13 +46,13 @@ function ricercaPiattaforme() {
 }
 
 /* Funzione - Creazione e posizionamento delle varie sezioni della piattaforma (punteggio, righe, parete e basamento) */
-function creaPiattaforma(piattaforma) {
+function setPiattaforma(piattaforma) {
 	
 	/* Variabili - Creazione, salvataggio ed aggiunta delle sezioni del tavolo */
-	var punteggio = creazioneComponente(piattaforma, ELEMENTO_HTML, CLASSE_PUNTEGGIO, creaPunteggio);
-	var righe = creazioneComponente(piattaforma, ELEMENTO_HTML, CLASSE_RIGHE, creaRighe);
-	var parete = creazioneComponente(piattaforma, ELEMENTO_HTML, CLASSE_PARETE, creaParete);
-	var basamento = creazioneComponente(piattaforma, ELEMENTO_HTML, CLASSE_BASAMENTO, creaBasamento);
+	var punteggio = creazioneComponente(piattaforma, ELEMENTO_HTML, Classe.PIATTAFORMA.PUNTEGGIO.nome, null, creaPunteggio);
+	var righe = creazioneComponente(piattaforma, ELEMENTO_HTML, Classe.PIATTAFORMA.RIGHE.nome, null, creaRighe);
+	var parete = creazioneComponente(piattaforma, ELEMENTO_HTML, Classe.PIATTAFORMA.PARETE.nome, null, creaParete);
+	var basamento = creazioneComponente(piattaforma, ELEMENTO_HTML, Classe.PIATTAFORMA.BASAMENTO.nome, null, creaBasamento);
 	
 	/* TODO: rifare questa sezione di codice D: */
 	/* Funzioni - Creazione parte logica delle 2 sezioni ("righe" e "parete") */
@@ -143,18 +69,17 @@ function creaPunteggio(punteggio) {
 	var elemRiga = null;
 	var elemCella = null;
 	
-	elemRiga = creazioneComponente(punteggio, ELEMENTO_HTML, CLASSE_PUNTEGGIO_RIGA, null);
-	elemCella = creazioneComponente(elemRiga, ELEMENTO_IMMAGINE, CLASSE_PUNTEGGIO_CELLA, null);
+	elemRiga = creazioneComponente(punteggio, ELEMENTO_HTML, Classe.PIATTAFORMA.PUNTEGGIO.RIGA.nome, null, null);
+	elemCella = creazioneComponente(elemRiga, ELEMENTO_IMMAGINE, Classe.PIATTAFORMA.PUNTEGGIO.CELLA.nome, null, null);
 	elemCella.id = "punteggio-" + idCella++;
 	elemCella.src = IMMAGINE_SFONDO_PUNTEGGIO_ETICHETTA;
 	elemCella.innerHTML = idCella;
 	
 	for (var nRiga = 0; nRiga < N_RIGHE; nRiga++) {
-		var elemRiga = creazioneComponente(punteggio, ELEMENTO_HTML, CLASSE_PUNTEGGIO_RIGA, null);
+		var elemRiga = creazioneComponente(punteggio, ELEMENTO_HTML, Classe.PIATTAFORMA.PUNTEGGIO.RIGA.nome, null, null);
 		
 		for (var nCella = 0; nCella < N_COLONNE_PUNTEGGIO; nCella++) {
-			var elemCella = creazioneComponente(elemRiga, ELEMENTO_IMMAGINE, CLASSE_PUNTEGGIO_CELLA, null);
-			elemCella.id = "punteggio-" + idCella++;
+			var elemCella = creazioneComponente(elemRiga, ELEMENTO_IMMAGINE, Classe.PIATTAFORMA.PUNTEGGIO.CELLA.nome, 'punteggio-' + idCella++, null);
 			
 			if ((idCella % 5) == 0) {
 				elemCella.src = IMMAGINE_SFONDO_PUNTEGGIO_ETICHETTA;
@@ -171,11 +96,10 @@ function creaRighe(righe) {
 	var idCella = 0;
 	
 	for (var nRiga = 0; nRiga < N_RIGHE; nRiga++) {
-		var elemRiga = creazioneComponente(righe, ELEMENTO_HTML, CLASSE_RIGHE_RIGA, null);
+		var elemRiga = creazioneComponente(righe, ELEMENTO_HTML, Classe.PIATTAFORMA.RIGHE.RIGA.nome, null, null);
 		
 		for (var nCella = 0; nCella < nRiga+1; nCella++) {
-			var elemCella = creazioneComponente(elemRiga, ELEMENTO_IMMAGINE, CLASSE_RIGHE_CELLA, null);
-			elemCella.id = "righe-" + idCella++;
+			var elemCella = creazioneComponente(elemRiga, ELEMENTO_IMMAGINE, Classe.PIATTAFORMA.RIGHE.CELLA.nome, 'righe-' + idCella++, null);
 			elemCella.src = IMMAGINE_SFONDO_RIGHE;
 		}
 	}
@@ -184,12 +108,11 @@ function creaRighe(righe) {
 /* Funzione - Creazione GUI per la sezione "parete" (parte centrale a destra) */
 function creaParete(parete) {
 	for (var nRiga = 0; nRiga < N_RIGHE; nRiga++) {
-		var elemRiga = creazioneComponente(parete, ELEMENTO_HTML, CLASSE_PARETE_RIGA, null);
+		var elemRiga = creazioneComponente(parete, ELEMENTO_HTML, Classe.PIATTAFORMA.PARETE.nome, null, null);
 		var idCella = 0;
  
 		for (var nCella = 0; nCella < N_COLONNE_PARETE; nCella++){
-			var elemCella = creazioneComponente(elemRiga, ELEMENTO_IMMAGINE, CLASSE_PARETE_CELLA, null);
-			elemCella.id = "parete-" + idCella++;
+			var elemCella = creazioneComponente(elemRiga, ELEMENTO_IMMAGINE, Classe.PIATTAFORMA.PARETE.CELLA.nome, 'parete-' + idCella++, null);
 			elemCella.src = IMMAGINI_PIASTRELLE[(nCella + (nRiga * (N_COLONNE_PARETE - 1))) % N_COLONNE_PARETE];	/* TODO: semplificare */
 		}
 	}
@@ -197,17 +120,16 @@ function creaParete(parete) {
 
 /* Funzione - Creazione GUI per la sezione "basamento" (parte inferiore) */
 function creaBasamento(basamento) {
-	var basamentoRiga = creazioneComponente(basamento, ELEMENTO_HTML, CLASSE_BASAMENTO_RIGA, null);
-	var basamentoPunteggio = creazioneComponente(basamento, ELEMENTO_HTML, CLASSE_BASAMENTO_PUNTEGGIO, null);
+	var basamentoRiga = creazioneComponente(basamento, ELEMENTO_HTML, Classe.PIATTAFORMA.BASAMENTO.RIGA.nome, null, null);
+	var basamentoPunteggio = creazioneComponente(basamento, ELEMENTO_HTML, Classe.PIATTAFORMA.BASAMENTO.PUNTEGGIO.nome, null, null);
 
 	for (var nCella = 0; nCella < N_COLONNE_BASAMENTO; nCella++) {
-		var elemCella = creazioneComponente(basamentoRiga, ELEMENTO_HTML, CLASSE_BASAMENTO_CELLA, null);
-		elemCella.id = "basamento-" + nCella;
+		var elemCella = creazioneComponente(basamentoRiga, ELEMENTO_HTML, Classe.PIATTAFORMA.BASAMENTO.CELLA.nome, 'basamento-' + nCella, null);
 		
-		var elemImmagine = creazioneComponente(elemCella, ELEMENTO_IMMAGINE, CLASSE_BASAMENTO_CELLA_IMMAGINE, null);
+		var elemImmagine = creazioneComponente(elemCella, ELEMENTO_IMMAGINE, Classe.PIATTAFORMA.BASAMENTO.CELLA_IMMAGINE.nome, null, null);
 		elemImmagine.src = IMMAGINE_SFONDO_BASAMENTO;
 		
-		var elemEtichetta = creazioneComponente(elemCella, ELEMENTO_HTML, CLASSE_BASAMENTO_CELLA_ETICHETTA, null);
+		var elemEtichetta = creazioneComponente(elemCella, ELEMENTO_HTML, Classe.PIATTAFORMA.BASAMENTO.CELLA_ETICHETTA.nome, null, null);
 		elemEtichetta.innerHTML = VALORI_BASAMENTO[nCella];
 	}
 }
@@ -216,13 +138,13 @@ function creaBasamento(basamento) {
 /* MERGE: collegamento con l'espositore */
 /* Funzione - Creazione evento per la sezione "punteggio" */
 function aggiungiEventiPiattaforma(piattaforma) {
-	var righe = piattaforma.getElementsByClassName(CLASSE_RIGHE)[0];
-	var parete = piattaforma.getElementsByClassName(CLASSE_PARETE)[0];
-	var celle = righe.getElementsByClassName(CLASSE_RIGHE_CELLA);
+	var righe = piattaforma.getElementsByClassName(Classe.PIATTAFORMA.RIGHE.nome)[0];
+	var parete = piattaforma.getElementsByClassName(Classe.PIATTAFORMA.PARETE.nome)[0];
+	var celle = righe.getElementsByClassName(Classe.PIATTAFORMA.RIGHE.CELLA.nome);
 	
 	Array.from(celle).forEach(function(cella) {
 		cella.addEventListener(EVENTO_CLICK, function() {
-			var infoCella = getInfoCella(cella, CLASSE_RIGHE_CELLA);
+			var infoCella = getInfoCella(cella, Classe.PIATTAFORMA.RIGHE.CELLA.nome);
 			eventoRighe(righe, parete, infoCella);
 		});
 	});
@@ -233,10 +155,10 @@ function getInfoCella(cella, classe) {
 	var ret = null;
 	
 	switch (classe) {
-		case CLASSE_RIGHE_CELLA: 	ret = getInfoCellaRighe(cella);
-									break;
-		case CLASSE_PARETE_CELLA: 	ret = getInfoCellaParete(cella);
-									break;
+		case Classe.PIATTAFORMA.RIGHE.CELLA.nome: 	ret = getInfoCellaRighe(cella);
+													break;
+		case Classe.PIATTAFORMA.PARETE.CELLA.nome: 	ret = getInfoCellaParete(cella);
+													break;
 	}
 	
 	return ret;
@@ -303,8 +225,8 @@ function controlloPiastrella(infoCella, piastrella, righe, parete) {
 	var nColonna = infoCella.nColonna;
 	var controlli = {controlloRiga: true, controlloRighe: true, controlloParete: true};
 	
-	var celleRighe = righe.getElementsByClassName(CLASSE_RIGHE_CELLA);
-	var celleParete = parete.getElementsByClassName(CLASSE_PARETE_CELLA);
+	var celleRighe = righe.getElementsByClassName(Classe.PIATTAFORMA.RIGHE.CELLA.nome);
+	var celleParete = parete.getElementsByClassName(Classe.PIATTAFORMA.PARETE.CELLA.nome);
 	
 	/* CICLO: verifica che si possa inserire inserire la piastrella guardando le altre colonne della riga (sezione "righe") */
 	for (var colonnaLogica = 0; colonnaLogica < (nRiga + 1); colonnaLogica++) {
@@ -348,18 +270,18 @@ function controlloPiastrella(infoCella, piastrella, righe, parete) {
 /* TODO: modificare CSS collegato */
 /* Funzione - Animazione per azioni non permesse */
 function animazioneErrore(vettore, nCella) {
-	vettore[nCella].classList.add(CLASSE_ERRORE_INSERIMENTO_PIASTRELLA);
+	vettore[nCella].classList.add(Classe.ERRORE.INSERIMENTO_PIASTRELLA.nome);
 	
 	/* Funzione: aspetta DURATA_ANIMAZIONE ms prima di eseguire la funzione al suo interno */
 	setTimeout(function() {
-		vettore[nCella].classList.remove(CLASSE_ERRORE_INSERIMENTO_PIASTRELLA);
+		vettore[nCella].classList.remove(Classe.ERRORE.INSERIMENTO_PIASTRELLA.nome);
 	}, DURATA_ANIMAZIONE);
 }
 
 /* TODO: migliorare leggibilità codice */
 /* Funzione - Aggiunge una piastrella in fondo alla riga selezionata (sezione "righe") */
 function aggiungiPiastrella(righe, nRiga, piastrella) {
-	var vettoreRighe = righe.getElementsByClassName(CLASSE_RIGHE_CELLA);
+	var vettoreRighe = righe.getElementsByClassName(Classe.PIATTAFORMA.RIGHE.CELLA.nome);
 	
 	for (var nColonnaControllo = nRiga; nColonnaControllo >= 0; nColonnaControllo--)
 		if (righeLogica[nRiga][nColonnaControllo] == null) {
@@ -387,7 +309,7 @@ function isRigaPiena(nRiga) {
 /* TODO: migliorare leggibilità codice */
 /* Funzione - Toglie tutte le piastrelle dalla riga selezionata (sezione "righe") */
 function svuotaRiga(righe, nRiga) {
-	var vettoreRighe = righe.getElementsByClassName(CLASSE_RIGHE_CELLA);
+	var vettoreRighe = righe.getElementsByClassName(Classe.PIATTAFORMA.RIGHE.CELLA.nome);
 	
 	for (var nColonna = 0; nColonna < (nRiga + 1); nColonna++) {
 		vettoreRighe[numero_triangolare(nRiga) + nColonna].style.opacity = 0.5;
@@ -399,10 +321,10 @@ function svuotaRiga(righe, nRiga) {
 /* TODO: migliorare leggibilità codice */
 /* Funzione - Inserisce una piastrella nella sezione "parete" */
 function inserisciPiastrella(nRiga, piastrella, parete) {
-	var vettoreParete = parete.getElementsByClassName(CLASSE_PARETE_CELLA);
+	var vettoreParete = parete.getElementsByClassName(Classe.PIATTAFORMA.PARETE.CELLA.nome);
 	
 	pareteLogica[nRiga][(piastrella + nRiga) % N_RIGHE] = 1;
-	vettoreParete[((nRiga) * N_RIGHE) + ((piastrella + nRiga) % N_RIGHE)].classList.add(CLASSE_PARETE_CELLA_SELEZIONATA);
+	vettoreParete[((nRiga) * N_RIGHE) + ((piastrella + nRiga) % N_RIGHE)].classList.add(Classe.PIATTAFORMA.PARETE.CELLA_SELEZIONATA.nome);
 }
 
 /* TODO: migliorare leggibilità codice */
@@ -430,12 +352,12 @@ function inizializzaPareteLogica(){
 /* TODO: migliorare leggibilità codice */
 /* TODO: inserire una descrizione */
 function caricaPareteGrafica(parete){
-	var celle = parete.getElementsByClassName(CLASSE_PARETE_CELLA);
+	var celle = parete.getElementsByClassName(Classe.PIATTAFORMA.PARETE.CELLA.nome);
 	let index = 0;
 	for (let riga = 0; riga < N_RIGHE; riga++)
 		for (let col = 0; col < N_RIGHE; col++) {
 			if (pareteLogica[riga][col] == 1){
-				celle[index].classList.add(CLASSE_PARETE_CELLA_SELEZIONATA);
+				celle[index].classList.add(Classe.PIATTAFORMA.PARETE.CELLA_SELEZIONATA.nome);
 			}
 			
 			index++;

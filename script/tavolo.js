@@ -1,4 +1,4 @@
-/**
+﻿/**
  * TODO [2]:
  * Cambiare tutte le variabili e tutte le costanti in cui appare la
  * dicitura "bottone", per indicare il "button" inglese, in italiano
@@ -45,14 +45,14 @@ const COLORE_OMBREGGIATURA = "#000000aa";
 /* Costante - Il percorso dell'immagine del bottone per tornare alla schermata precedente */
 const PERCORSO_BOTTONE_INDIETRO = "image/bottone_indietro.svg";
 
-/* Funzione - Ricerca gli elementi con la classe "tavolo" e gli aggiunge il DOM e i relativi eventi */
-function ricercaElementiTavolo() {
+/* Funzione (Evento) - Ricerca gli elementi con la classe "tavolo" e gli aggiunge il DOM e i relativi eventi */
+function eventoRicercaElementiTavolo() {
 
 	/* Variabile - Salvataggio dell'HTML document nella variabile doc */
 	var doc = this.document;
 	
 	/* Array - Salvataggio degli elementi con la classe "tavolo" (nel DOM della pagina HTML iniziale) */
-	var tavoli = document.getElementsByClassName(CLASSE_TAVOLO);
+	var tavoli = document.getElementsByClassName(Classe.TAVOLO.nome);
 	
 	/* Variabile - Salvataggio del numero dei giocatori (passato dalla pagina precedente) */
 	var nGiocatori = ricercaNumeroGiocatori();
@@ -65,7 +65,7 @@ function ricercaElementiTavolo() {
 		
 		/* For Each BLOCCANTE - Per ciascun elemento con la classe "tavolo", le aggiungo il DOM e gli eventi corrispondenti */
 		Array.from(tavoli).forEach(function(tavolo) {
-			creaTavolo(tavolo, nGiocatori);
+			creaElementoTavolo(tavolo, nGiocatori);
 			aggiungiEventiTavolo(tavolo);
 
 		});
@@ -90,7 +90,7 @@ function creaElementoTavolo(tavolo, nGiocatori) {
 	 *			   --> le assegno la classe "piattaforma" (CLASSE_PIATTAFORMA)
 	 *			   --> modifico l'elemento appena creato dalla funzione con la funzione "setPiattaforma"
 	 */
-	var piattaforma = creazioneComponente(tavolo, ELEMENTO_HTML, CLASSE_PIATTAFORMA, setPiattaforma);
+	var piattaforma = creazioneComponente(tavolo, ELEMENTO_HTML, Classe.TAVOLO.PIATTAFORMA.nome, null, setPiattaforma);
 	
 	/* Variabile - Salvataggio del numero degli espositori da creare nel tavolo (dipende dal numero dei giocatori) */
 	var nEspositori = (nGiocatori * 2) + 1;
@@ -98,7 +98,7 @@ function creaElementoTavolo(tavolo, nGiocatori) {
 	/* Ciclo - Creazione dell'elemento e del layout per gli N espositori */
 	/* !TODO */
 	for (var nEspositore = 0; nEspositore < nEspositori; nEspositore++) {
-		var espositore = creazioneComponente(tavolo, ELEMENTO_HTML, CLASSE_ESPOSITORE, setEspositore(espositore, nEspositore));
+		var espositore = creazioneComponente(tavolo, ELEMENTO_HTML, Classe.TAVOLO.ESPOSITORE.nome, 'espositore-' + nEspositore, setEspositore);
 		setLayoutEspositore(espositore, nEspositore, nEspositori);
 	}
 }
@@ -182,7 +182,7 @@ function creaBottoneIndietro(tavolo, componente, componenti) {
 	 *			   --> le assegno la classe "bottone-indietro" (CLASSE_BOTTONE_INDIETRO)
 	 *			   --> non modifico l'elemento appena creato con un'altra funzione (null)
 	 */
-	var bottone = creazioneComponente(tavolo, ELEMENTO_IMMAGINE, CLASSE_BOTTONE_INDIETRO, null);
+	var bottone = creazioneComponente(tavolo, ELEMENTO_IMMAGINE, CLASSE_BOTTONE_INDIETRO, null, null);
 	
 	/* Attributo HTML - Imposto l'attributo src con il percorso dell'immagine SVG associata al bottone */
 	bottone.src = PERCORSO_BOTTONE_INDIETRO;
@@ -216,5 +216,5 @@ function eventoBottoneIndietro(tavolo, componente, componenti) {
 	/* TODO: attivare eventi componenti qui */
 }
 
-/* Listener - Quando viene caricata la finestra (window), viene chiamata la funzione ricercaElementiTavolo() */
-window.addEventListener(EVENTO_LOAD, ricercaElementiTavolo);	
+/* Listener - Quando viene caricata la finestra (window), viene chiamata la funzione eventoRicercaElementiTavolo() */
+window.addEventListener(EVENTO_LOAD, eventoRicercaElementiTavolo);	
