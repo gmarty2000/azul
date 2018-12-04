@@ -1,4 +1,4 @@
-/* Struttura logica - Classi CSS */
+/* Struttura logica - Insieme di valori (per inserire una classe bisogna specificare il suo "albero") */
 const TAVOLO = {
     nome: 'tavolo',
     PIATTAFORMA: {
@@ -35,6 +35,8 @@ const TAVOLO = {
     }
 };
 
+/* Classe - Con questa classe semplifico l'accesso all'elemento TAV0LO (lasciando all'utente la possibilità di
+            invocare Classe.PIATTAFORMA / Classe.ESPOSITORE al posto di Classe.TAVOLO.PIATTAFORMA / Classe.TAVOLO.ESPOSITORE) */
 class Classe {
     static get TAVOLO() {
         return TAVOLO;
