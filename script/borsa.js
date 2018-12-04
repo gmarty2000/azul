@@ -38,6 +38,7 @@ function prendiPiastrelle() {
 	} else
 		errore('Tessere esaurite', -2);
 	
+	/* Return - Restituisco le 4 piastrelle estratte casualmente dalla borsa */
 	return piastrellePrese;
 }
 
