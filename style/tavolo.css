@@ -65,9 +65,10 @@ body {
 
 .tavolo .espositore {
 	position: absolute;
-	width: 15vw;
-	height: 30vh;
-	margin: 2.5%;
+	width: 20vh;
+	height: 20vh;
+	margin-top: 1vh;
+	margin-left: 5vw;
 }
 
 .tavolo .clicked {
