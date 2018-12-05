@@ -34,6 +34,29 @@ function creazioneComponente(corpo, tipoElemento, classe, id, funzione = null) {
 	return componente;
 }
 
+/* Funzione - Crea un nuovo attributo HTML, le setta un valore e lo inserisce nell'elemento HTML */
+function aggiungiAttributo(elemento, nomeAttributo, valore) {
+
+	/* Variabile - Creo un nuovo attributo HTML e lo salvo nella variabile */
+	var attributo = document.createAttribute(nomeAttributo);
+
+	/* Proprietà JS - Aggiungo il valore all'attributo HTML  */
+	attributo.value = valore;
+	
+	/* DOM - Aggiungo l'attributo HTML all'elemento HTML */
+	elemento.setAttributeNode(attributo);
+}
+
+/* Funzione - Ottiene l'attributo HTML e restituisce il suo valore */
+function ottieniAttributo(elemento, nomeAttributo) {
+
+	/* Variabile - Salvo il valore dell'attributo HTML ottenuto dall'elemento HTML */
+	var ret = elemento.getAttribute(nomeAttributo);
+	
+	/* Return - Restituisco il valore dell'attributo HTML desiderato */
+	return ret;
+}
+
 /* Funzione - Avvisa l'utente che si trova in presenza di un errore */
 function errore(strErr, numErr) {
 	

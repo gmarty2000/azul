@@ -28,7 +28,10 @@ const TAVOLO = {
             PUNTEGGIO: {nome: 'basamento-punteggio'}
         }
     },
-    ESPOSITORE: {nome: 'espositore'},
+    ESPOSITORE: {
+        nome: 'espositore',
+        PIASTRELLA: {nome: 'piastrella'}
+    },
 
     ERRORE: {nome: 'errore',
         INSERIMENTO_PIASTRELLA: {nome: 'errore-inserimento-piastrella'}
@@ -48,5 +51,9 @@ class Classe {
 
     static get ESPOSITORE() {
         return TAVOLO.ESPOSITORE;
+    }
+
+    static get ERRORE() {
+        return TAVOLO.ERRORE;
     }
 }
